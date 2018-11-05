@@ -69,37 +69,38 @@ public class Rules {
                         categoryScore[chose - 1] = 0;
                         categoryCheck[chose - 1] = true;
                     }
-                    //System.out.println(categoryCheck[chose - 1]);
                     return categoryCheck[chose - 1];
 
 
                 //case 7 is ThreeOfAKind
                 case (7):
-                    //test print lines were for testing.
-                    /*System.out.println("Test 7");*/
-                    System.out.println(checkMatch(dice, 3));
-                    return checkMatch(dice, 3);
+                    if (checkLowerSector[1] == true) {
+                        categoryScore[chose - 1] = ;
+                        categoryCheck[chose - 1] = true;
+                        return checkMatch(dice, 3);
+                            }
+                return categoryCheck[chose - 1];
 
 
                 //case 8 is FourOfAKind
                 case (8):
-                    //test print lines were for testing.
-                    /* System.out.println("Test 8");*/
-                    System.out.println(checkMatch(dice, 4));
-                    return checkMatch(dice, 4);
+                   if (checkLowerSector[2] = true) {
+                        categoryScore[chose - 1] =;
+                        categoryCheck[chose - 1] = true;
+                       return checkMatch(dice, 4);
 
+                   }
 
                 //case 9 is SmallStraight
                 case (9):
-                    //test print lines were for testing.
-                     System.out.println("Test 9");
-                     return true;
 
+                        return true;
 
                 //case 10 is LargeStraight
                 case (10):
-                    //test print lines were for testing.
-                     System.out.println("Test 10");
+                    if (inDice(
+                            scoreStraight(
+                                    false,inDice(dice,))))
                     return true;
 
                 //case 11 is FullHouse
@@ -108,7 +109,6 @@ public class Rules {
                     /* System.out.println("Test 11");*/
                     if (checkMatch(dice, 3) &&
                             checkMatch(dice, 2)) {
-                        System.out.println("this works.");
                         return true;
                     }
                     //not sure if i need the !checkMatch(5)
@@ -116,19 +116,16 @@ public class Rules {
 
                 //case 12 is Yahtzee
                 case (12):
-                    //test print lines were for testing.
-                    /* System.out.println("Test 12");*/
-                    System.out.println(checkMatch(dice, 5));
-                    return checkMatch(dice, 5);
-//case 12 crashes the game, not good.
+                    if (checkLowerSector[3] = true) {
+                        return checkMatch(dice, 5);
+                    }
 
                 //case 13 is Chance
                 case (13):
                     sumDice(dice, chose);
-                    System.out.println(sumDice(dice, chose));
                     return true;
                 //test print lines were for testing.
-              /*  System.out.println("Test 13"); */
+
 
 
                 default:
@@ -144,8 +141,6 @@ public class Rules {
 //            } else {
 //
 //
-//                //todo lowersection
-//                return true;
 //            }
 
         } else {
@@ -176,11 +171,11 @@ public class Rules {
         switch (numberOfDice) {
             case 1:
                 boolean[] checkChance = new boolean[1];
-                    if (checkChance[1] == true) {
-                        return false;
-                    } else {
-                        checkLowerSector[4] = true;
-                        return true;
+                if (checkChance[1] == true) {
+                    return false;
+                } else {
+                    checkLowerSector[4] = true;
+                    return true;
                 }
             case 2:
                 for (int i = 0; i <= (dice.length); i++) {
@@ -206,26 +201,25 @@ public class Rules {
             case 4: //chance is 13 category
                 boolean[] checkYahtzee = new boolean[1];
                 if (checkYahtzee[1] = false) {
-                for (int i = 0; i < 5; i++) { //4 of kind
-                    for (int a = 0; a < 5; a++) {
-                        for (int b = 0; b < 5; b++) {
-                            for (int c = 0; c < 5; c++) {
-                                if (dice[i] == dice[a] &&
-                                        dice[i] == dice[b] &&
-                                        dice[i] == dice[c] &&
-                                        dice[a] == dice[b] &&
-                                        dice[a] == dice[c] &&
-                                        dice[b] == dice[c]) ;
-                                checkLowerSector[2] = true;
-                                return true;
+                    for (int i = 0; i < 5; i++) { //4 of kind
+                        for (int a = 0; a < 5; a++) {
+                            for (int b = 0; b < 5; b++) {
+                                for (int c = 0; c < 5; c++) {
+                                    if (dice[i] == dice[a] &&
+                                            dice[i] == dice[b] &&
+                                            dice[i] == dice[c] &&
+                                            dice[a] == dice[b] &&
+                                            dice[a] == dice[c] &&
+                                            dice[b] == dice[c]) ;
+                                    checkLowerSector[2] = true;
+                                    return true;
+                                }
                             }
-                        }
                         }
                     }
 
                 }
             case 5:
-
                 for (int i = 0; i < 5; i++) { //5 of kind
                     for (int a = 0; a < 5; a++) {
                         for (int b = 0; b < 5; b++) {
@@ -299,15 +293,15 @@ public class Rules {
 
 
     public int sumDice(Die[] dice){
-            int subTotal = 0;
+        int subTotal = 0;
 
-            // facevalue is getting the dice now
-            for (Die die : dice) {
-                subTotal += die.getFaceValue();
+        // facevalue is getting the dice now
+        for (Die die : dice) {
+            subTotal += die.getFaceValue();
 
-            }
-            return subTotal;
         }
+        return subTotal;
+    }
 
     public int sumDice(Die[] dice, int value){
 
@@ -326,7 +320,7 @@ public class Rules {
 
                 // subTotal will be greater or equals to faceValue then
                 subTotal += facevalue;
-            }
+            }}return subTotal;}
 
     // Methods for straight scoring only
 
@@ -353,7 +347,9 @@ public class Rules {
                     }
                 }
             }
-            if(scored){return 30;}
+            if(scored){
+                return 30;
+            }
         }
         return 0;
     }
@@ -361,7 +357,9 @@ public class Rules {
     // Check for the existence of a certain faceValue in the dice array
     private static boolean inDice(Die[] dice, int query){
         for(int i=0;i<dice.length;i++){
-            if(dice[i].getFaceValue()==query){return true;}
+            if(dice[i].getFaceValue()==query){
+                return true;
+            }
 
         }
         return false;
